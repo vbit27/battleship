@@ -1,22 +1,19 @@
 const Ship = (length) => {
-    let shipStatus = [];
-
-    for (let i = 0; length < 2; i++) {
-        shipStatus.push('notHit');
-    }
+    const shipStatus = Array.from('O'.repeat(length)); // O = not hit
 
     const hit = (position) => {
         shipStatus[position] = 'hit';
     };
 
     const isSunk = () => {
-        if (shipStatus.some((x) => x == 'notHit')) {
+        if (shipStatus.some((x) => x == 'O')) {
             return false;
         } else true;
     };
     return {
-        // hit,
+        hit,
         isSunk,
+        shipStatus,
     };
 };
 
